@@ -25,3 +25,16 @@ And use `--network=vpn_bridge` when running the vpn docker container.
 In this case, use `--network=vpn_bridge` in the run command above.
 ### Method B: Refer to the VPN Container directly
 You can also refer to the installed VPN docker container directly. If, for example, you have a docker container named `openvpn`, you can use `--network=container:openvpn` in the run command above.
+
+## Example Code Block:
+```
+mkdir Documents/docker-vpn-tester
+cd Documents/docker-vpn-tester
+wget https://raw.githubusercontent.com/induna-crewneck/docker-vpn-tester/main/app.py
+wget https://raw.githubusercontent.com/induna-crewneck/docker-vpn-tester/main/Dockerfile
+sudo docker build -t docker-vpn-tester .
+sudo docker run -d \
+  --name docker-vpn-tester \
+  --network=container:pia_vpn \
+  docker-vpn-tester
+```
