@@ -1,10 +1,11 @@
-# Docker VPN Checker v1.0
+# Docker VPN Checker v1.1
 # https://github.com/induna-crewneck/docker-vpn-tester
 # Developed and tested on Raspberry Pi OS x64 / Debian 1:6.6.20-1+rpt1 (2024-03-07)
 
 import requests
 import time
 import sys
+from datetime import datetime
 
 def get_ip_and_location():
     try:
@@ -18,7 +19,8 @@ def get_ip_and_location():
 
 def log_ip_and_location():
     ip, location = get_ip_and_location()
-    sys.stdout.write(f"Public IP:   {ip}    {location}\n")
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    sys.stdout.write(f"[{timestamp}] Public IP:   {ip}    {location}\n")
     sys.stdout.flush()
     
 sys.stdout.write(f"Starting up...")
